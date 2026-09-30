@@ -5,7 +5,6 @@
 #include <zephyr/init.h>
 #include <zephyr/device.h>
 #include <zephyr/dt-bindings/clock/mcux_lpc_syscon_clock.h>
-#include <zephyr/sys/printk.h>
 #include <fsl_clock.h>
 #include <fsl_spc.h>
 #include <soc.h>
@@ -15,17 +14,6 @@
 #define BOARD_BOOTCLOCKFRO96M_CORE_CLOCK 96000000U
 /* System clock frequency. */
 extern uint32_t SystemCoreClock;
-
-/* The init message printed before main */
-static int my_board_init(void)
-{
-    printk("*** Board Initialized ***\n");
-    
-    return 0;
-}
-
-/* Register the function */
-SYS_INIT(my_board_init, APPLICATION, CONFIG_BOARD_INIT_PRIORITY);
 
 void board_early_init_hook(void)
 {
